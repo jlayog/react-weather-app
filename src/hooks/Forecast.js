@@ -4,11 +4,13 @@ import Conditions from "../components/Conditions";
 
 
 const Forecast = () => {
-    const [data, setData] = useState({});
+    const [data, setData] = useState();
     const [searchTerm, setSearchTerm] = useState('');
 
     const handleChange = (e) => {
+        e.preventDefault();
         setSearchTerm(e.target.value);
+        console.log(e.target.value);
     }
 
 
@@ -20,10 +22,11 @@ const Forecast = () => {
             }
         };
         
-        fetch(`${process.env.REACT_APP_WEATHER_API_URL}/current.json?key=${process.env.REACT_APP_WEATHER_API_KEY}&q=Baltimore&aqi=yes`, options)
+        fetch(`${process.env.REACT_APP_WEATHER_API_URL}/current.json?key=${process.env.REACT_APP_WEATHER_API_KEY}&q=${searchTerm}&aqi=yes`, options)
             .then(response => response.json())
             .then(response => {
                 setData(response)
+                console.log(response);
             })
             .catch(err => console.error(err));
     }
@@ -34,10 +37,10 @@ const Forecast = () => {
            <div>
                {JSON.stringify(data)}
            </div>
-           <form onSubmit={fetchData}>
-                <input type="text" placeholder="Enter city name" value={searchTerm} onChange={handleChange}/>
-                <button type="submit" value="Submit" />
-           </form>
+                <form onSubmit={fetchData}>
+                    <input type="text" placeholder="Enter city name" value={searchTerm} onChange={handleChange}/>
+                    <button type="submit">Submit</button>
+                </form> 
            <button onClick={fetchData}>Get Forecast</button>
            <Conditions data={data} />
        </div>
