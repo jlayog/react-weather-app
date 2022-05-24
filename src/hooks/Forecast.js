@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Conditions from "../components/Conditions";
 
 
@@ -8,13 +8,12 @@ const Forecast = () => {
     const [searchTerm, setSearchTerm] = useState('');
 
     const handleChange = (e) => {
-        e.preventDefault();
         setSearchTerm(e.target.value);
-        console.log(e.target.value);
     }
 
 
-    function fetchData() {
+    function fetchData(e) {
+        e.preventDefault();
         const options = {
             method: 'GET',
             headers: {
@@ -26,7 +25,6 @@ const Forecast = () => {
             .then(response => response.json())
             .then(response => {
                 setData(response)
-                console.log(response);
             })
             .catch(err => console.error(err));
     }
@@ -38,11 +36,14 @@ const Forecast = () => {
                {JSON.stringify(data)}
            </div>
                 <form onSubmit={fetchData}>
+                    {/* --------------- NOTES ------------ */}
+                    {/* Needed e.preventDefault onSubmit to keep from refreshing */}
                     <input type="text" placeholder="Enter city name" value={searchTerm} onChange={handleChange}/>
                     <button type="submit">Submit</button>
                 </form> 
            <button onClick={fetchData}>Get Forecast</button>
-           <Conditions data={data} />
+           {/* Need an operator to render depending on data call */}
+           {/* <Conditions data={data} /> */}
        </div>
     )
 }
