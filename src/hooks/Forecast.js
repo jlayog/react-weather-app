@@ -32,9 +32,6 @@ const Forecast = () => {
     return (
         <div>
            <h2>Find Current Weather Conditions</h2>
-           <div>
-               {JSON.stringify(data)}
-           </div>
                 <form onSubmit={fetchData}>
                     {/* --------------- NOTES ------------ */}
                     {/* Needed e.preventDefault onSubmit to keep from refreshing */}
