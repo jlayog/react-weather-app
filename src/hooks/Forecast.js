@@ -4,7 +4,7 @@ import Conditions from "../components/Conditions";
 
 
 const Forecast = () => {
-    const [data, setData] = useState();
+    const [data, setData] = useState(undefined);
     const [searchTerm, setSearchTerm] = useState('');
 
     const handleChange = (e) => {
@@ -39,11 +39,10 @@ const Forecast = () => {
                     {/* --------------- NOTES ------------ */}
                     {/* Needed e.preventDefault onSubmit to keep from refreshing */}
                     <input type="text" placeholder="Enter city name" value={searchTerm} onChange={handleChange}/>
-                    <button type="submit">Submit</button>
+                    <button type="submit">Get Forecast</button>
                 </form> 
-           <button onClick={fetchData}>Get Forecast</button>
            {/* Need an operator to render depending on data call */}
-           {/* <Conditions data={data} /> */}
+           {data && <Conditions data={data} />}
        </div>
     )
 }
