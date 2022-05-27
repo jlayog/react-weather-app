@@ -67,3 +67,7 @@
 .last-update p {
   font-size: 12px;
 }
+
+button {
+  margin-left: 10px;
+}

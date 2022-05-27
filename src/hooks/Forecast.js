@@ -14,14 +14,14 @@ const Forecast = () => {
 
     function fetchData(e) {
         e.preventDefault();
-        const options = {
-            method: 'GET',
-            headers: {
-                "CDN-Status": "200",
-            }
-        };
+        // const options = {
+        //    method: 'GET',
+        //    headers: {
+        //        "CDN-Status": "200",
+        //    }
+        // };
         
-        fetch(`${process.env.REACT_APP_WEATHER_API_URL}/current.json?key=${process.env.REACT_APP_WEATHER_API_KEY}&q=${searchTerm}&aqi=yes`, options)
+        fetch(`${process.env.REACT_APP_WEATHER_API_URL}/current.json?key=${process.env.REACT_APP_WEATHER_API_KEY}&q=${searchTerm}&aqi=yes`)
             .then(response => response.json())
             .then(response => {
                 setData(response)

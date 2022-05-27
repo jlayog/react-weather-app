@@ -10,7 +10,7 @@ const Conditions = (props) => {
                 </div>
                 :
                 <div className="container">
-                    <h2><strong>{props.data.location.name}, {props.data.location.region}</strong></h2>
+                    <div><h2><strong>{props.data.location.name}, {Object.is(props.data.location.country, 'United States of America') ? <span>{props.data.location.region}</span> : <span>{props.data.location.country}</span>}</strong></h2></div>
                     <div className="info-header">
                         <h3>{Math.round(props.data.current.temp_f)}°F</h3>
                         <img className="forecast-icon" src={props.data.current.condition.icon} alt={props.data.current.condition.text} />
