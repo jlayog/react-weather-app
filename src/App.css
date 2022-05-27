@@ -58,7 +58,7 @@
   z-index: 1;
   overflow: auto;
   background-color: aliceblue;
-  width: 50%;
+  width: 40%;
   border: 1px solid #888;
   border-radius: 10px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -70,4 +70,10 @@
 
 button {
   margin-left: 10px;
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 80%;
+  }
 }

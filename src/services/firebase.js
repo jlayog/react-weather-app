@@ -22,7 +22,7 @@ export const getFirebase = () => {
     if (firebaseCache) {
         return firebaseCache;
     }
-    firebase.app;
+    firebase(app);
     firebaseCache = firebase;
     return firebase;
 };

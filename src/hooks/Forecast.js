@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Conditions from "../components/Conditions";
 
-
-
 const Forecast = () => {
     const [data, setData] = useState(undefined);
     const [searchTerm, setSearchTerm] = useState('');
@@ -21,6 +19,27 @@ const Forecast = () => {
             ref.current.select()
         }
     }, [editMode])
+
+    useEffect(() => {
+        if (navigator.geolocation) {
+            navigator.permissions
+                .query({ name: 'geolocation' })
+                .then((res) => {
+                    if (res.state === 'granted') {
+                        console.log(res.state);
+                    } else if (res.state === 'prompt') {
+                        console.log(res.state);
+                    } else if (res.state === 'denied') {
+                        alert('To enable location, you must click allow in the prompt.')
+                    }
+                    res.onchange = () => {
+                        console.log(res.state);
+                    };
+                });
+        } else {
+            alert("Sorry, location not available!")
+        }
+    })
 
     function fetchData(e) {
         e.preventDefault();
