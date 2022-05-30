@@ -6,6 +6,8 @@ const Forecast = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [editMode, setEditMode] = useState(false);
     const ref = useRef();
+    const [lat, setLat] = useState('');
+    const [long, setLong] = useState('');
 
     const handleChange = (e) => {
         setSearchTerm(e.target.value);
@@ -21,24 +23,15 @@ const Forecast = () => {
     }, [editMode])
 
     useEffect(() => {
-        if (navigator.geolocation) {
-            navigator.permissions
-                .query({ name: 'geolocation' })
-                .then((res) => {
-                    if (res.state === 'granted') {
-                        console.log(res.state);
-                    } else if (res.state === 'prompt') {
-                        console.log(res.state);
-                    } else if (res.state === 'denied') {
-                        alert('To enable location, you must click allow in the prompt.')
-                    }
-                    res.onchange = () => {
-                        console.log(res.state);
-                    };
-                });
-        } else {
-            alert("Sorry, location not available!")
-        }
+        if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                setLat(position.coords.latitude);
+                setLong(position.coords.longitude);
+              });
+          } else {
+            prompt("Geolocation Not Available");
+          }
+        
     })
 
     function fetchData(e) {
