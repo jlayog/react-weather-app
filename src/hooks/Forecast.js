@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Conditions from "../components/Conditions";
-import { DEFAULT_URL } from "../api";
+import { DEFAULT_URL, WEATHER_API_KEY, WEATHER_API_URL } from "../api";
 
 // TODO:
 // Default loading page - DONE
@@ -59,7 +59,7 @@ const Forecast = () => {
         //    }
         // };
         
-        fetch(`${process.env.REACT_APP_WEATHER_API_URL}/current.json?key=${process.env.REACT_APP_WEATHER_API_KEY}&q=${searchTerm}&aqi=yes`)
+        fetch(`${WEATHER_API_URL}/current.json?key=${WEATHER_API_KEY}&q=${searchTerm}&aqi=yes`)
             .then(response => response.json())
             .then(response => {
                 setData(response)
