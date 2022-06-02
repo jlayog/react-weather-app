@@ -3,7 +3,7 @@ import Conditions from "../components/Conditions";
 import { DEFAULT_URL } from "../api";
 
 // TODO:
-// Default loading page
+// Default loading page - DONE
 // Styling
 // 7 day forecast
 // More metrics
@@ -48,7 +48,7 @@ const Forecast = () => {
               setData(response)
           })
           .catch(err => console.error(err));   
-    });
+    }, []);
 
     function fetchData(e) {
         e.preventDefault();
