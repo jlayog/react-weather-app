@@ -21,6 +21,7 @@ const Forecast = () => {
         setSearchTerm(e.target.value);
     }
 
+    // Accessibility
     const handleFocus = (e) => e.target.select();
     
     // highlight text onClick
@@ -51,14 +52,7 @@ const Forecast = () => {
     }, []);
 
     function fetchData(e) {
-        e.preventDefault();
-        // const options = {
-        //    method: 'GET',
-        //    headers: {
-        //        "CDN-Status": "200",
-        //    }
-        // };
-        
+        e.preventDefault();   
         fetch(`${WEATHER_API_URL}/current.json?key=${WEATHER_API_KEY}&q=${searchTerm}&aqi=yes`)
             .then(response => response.json())
             .then(response => {

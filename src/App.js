@@ -1,11 +1,11 @@
-import './App.css';
+import './App.scss';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Forecast from './hooks/Forecast';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>React Weather App</h1>
      </header>
      <main>
        <Forecast />
