@@ -7,6 +7,7 @@ import { DEFAULT_URL, WEATHER_API_KEY, WEATHER_API_URL } from "../api";
 // Styling
 // 7 day forecast
 // More metrics
+// Location fix
 
 
 const Forecast = () => {
@@ -62,15 +63,17 @@ const Forecast = () => {
     }
     
     return (
-        <div>
-           <h2>Find Current Weather Conditions</h2>
+        <div className="background">
+            <h2>Find Current Weather Conditions</h2>
                 <form onSubmit={fetchData}>
                     {/* Needed e.preventDefault onSubmit to keep from refreshing */}
                     <input type="text" placeholder="Enter city name" value={searchTerm} onChange={handleChange} onFocus={handleFocus} onClick={() => setEditMode(!editMode)} ref={ref}/>
                     <button type="submit">Get Forecast</button>
                 </form> 
-           {/* Need an operator to render depending on data call */}
-           {data && <Conditions data={data} />}
+            {/* Need an operator to render depending on data call */}
+            <div className="overlay">
+                {data && <Conditions data={data} />}
+            </div>
        </div>
     )
 }

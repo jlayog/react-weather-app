@@ -1,11 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap');
-@import "~bootstrap/scss/bootstrap";
+@font-face {
+  font-family: 'Outfit';
+  src: local('Outfit'), url('./assets/fonts/Outfit-VariableFont_wght.ttf') format('truetype');
+}
 
 body {
   font-family: 'Outfit', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: url('/src/assets/sky.jpg');
+  background-image: url('./assets/sky.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .App {
@@ -27,7 +32,7 @@ body {
   width: auto;
 }
 
-.container {
+.custom-container {
   margin: 20px auto;
   padding: 20px;
   z-index: 1;
@@ -36,18 +41,22 @@ body {
   border: 1px solid #888;
   border-radius: 10px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-}
-
-.container .weather-details {
-  max-width: 992px;
+  width: 40%;
 }
 
 .last-update p {
   font-size: 12px;
 }
 
-button {
+.btn {
   margin-left: 10px;
+}
+
+.weather-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
 }
 
 @media (max-width: 480px) {
