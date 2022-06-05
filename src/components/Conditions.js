@@ -10,7 +10,7 @@ const Conditions = (props) => {
                 </div>
                 :
                 <div>
-                    <div className="custom-container">
+                    <div className="container">
                         <div className="info-header">
                             <h2>
                                 <strong>{props.data.location.name}, {Object.is(props.data.location.country, 'United States of America') 
@@ -23,17 +23,17 @@ const Conditions = (props) => {
                             <h3>{Math.round(props.data.current.temp_f)}°F</h3>
                             <img className="forecast-icon" src={props.data.current.condition.icon} alt={props.data.current.condition.text} />
                         </div>
-                        <p>It is currently {Math.round(props.data.current.temp_f)}°F degrees out with {props.data.current.condition.text.toLowerCase()} skies.</p>
+                        <p>{props.data.current.condition.text}</p>
                     </div> 
                     <div className="weather-details">
                         <div>
-                            <p>It feels like {Math.round(props.data.current.feelslike_f)}°F.</p>
+                            <p>Feels like {Math.round(props.data.current.feelslike_f)}°F.</p>
                         </div>
                         <div>
                             <p>Humidity: {Math.round(props.data.current.humidity)}%</p>
                         </div>
                         <div>    
-                            <p>Wind: {props.data.current.wind_mph} mph</p>
+                            <p>Wind: {props.data.current.wind_mph}mph</p>
                         </div>
                     </div>  
                     <span className="last-update"><p>Last weather check: {props.data.current.last_updated}</p></span>
