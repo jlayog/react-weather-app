@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Conditions from "../components/Conditions";
 import { DEFAULT_URL, WEATHER_API_KEY, WEATHER_API_URL } from "../api";
 import Background from "../components/Background";
+import { FaSearch } from "react-icons/fa"
 
 // TODO:
 // Default loading page - DONE
@@ -66,13 +67,12 @@ const Forecast = () => {
     return (
         <div>
             <Background />
-            <div className="absolute-center">
-                <h2>Find Current Weather Conditions</h2>
-                    <form onSubmit={fetchData}>
-                        {/* Needed e.preventDefault onSubmit to keep from refreshing */}
-                        <input type="text" placeholder="Enter location" value={searchTerm} onChange={handleChange} onFocus={handleFocus} onClick={() => setEditMode(!editMode)} ref={ref}/>
-                        <button type="submit">GO!</button>
-                    </form>
+            <div className="input-field">
+                <form onSubmit={fetchData}>
+                    {/* Needed e.preventDefault onSubmit to keep from refreshing */}
+                    <input type="text" placeholder="Enter location" value={searchTerm} onChange={handleChange} onFocus={handleFocus} onClick={() => setEditMode(!editMode)} ref={ref}/>
+                    <button className="searchbtn" type="submit"><FaSearch className="searchIcon" /></button>
+                </form>
             </div> 
             {/* Need an operator to render depending on data call */}
             {data && <Conditions data={data} />}
