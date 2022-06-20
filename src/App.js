@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Forecast from './hooks/Forecast';
+import Home from './components/Home';
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
         
       </header>
       <main>
-        <Forecast />
+        <Home />
       </main>
     </div>
   );
